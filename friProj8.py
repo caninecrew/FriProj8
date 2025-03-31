@@ -1,7 +1,6 @@
 # 1. Imports
-from database import conn, c, view_all_customers, close_connection
-from customer import Customer
-from cli import collectInfo, start_cli
+from database import close_connection
+from cli import start_cli
 
 def main(): # This is the main function that orchestrates the program flow
     
