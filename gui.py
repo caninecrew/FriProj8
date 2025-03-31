@@ -72,7 +72,11 @@ def submitForm():
             messagebox.showerror("Error", "Invalid day for the given month")
             return
         
-        
+        # Check for February in non-leap years
+        if month == 2 and day == 29:
+            if not (year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)):
+                messagebox.showerror("Error", f"February 29 only exists in leap years")
+                return
         
     except ValueError:
         messagebox.showerror("Error", "Invalid date format")
