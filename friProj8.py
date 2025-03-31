@@ -1,4 +1,7 @@
+# 1. Imports
 import sqlite3
+
+# 2. Database Connection and Setup
 
 # Connect to SQLite database (or create it if it doesn't exist)
 conn = sqlite3.connect('customer.db') # This will create a new database file named customer.db in the current directory
@@ -20,21 +23,7 @@ CREATE TABLE IF NOT EXISTS customers (
 # Commit the changes to the database
 conn.commit()
 
-def collectInfo():
-    print("Contact Information Form")
-    print("Please fill out the following information:")
-    name = input("Name: ")
-    birthday = input("Birthday (MM-DD-YYYY): ")
-    email = input("Email: ")
-    phone_number = input("Phone Number: ")
-    address = input("Address: ")
-    city = input("City: ")
-    state = input("State/Province: ")
-    zipCode = input("ZIP/Postal Code: ")
-    country = input("Country: ")
-    preferredContact = input("Preferred Contact Method (Email/Phone): ")
-
-    return name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact
+# 3. Class Definition
 
 class Customer: # This class represents a customer and their contact information
     def __init__(self, name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact):
@@ -70,7 +59,25 @@ class Customer: # This class represents a customer and their contact information
         ''', (self.name, self.birthday, self.email, self.phone_number, self.address, self.preferredContact))
         conn.commit()
 
-def view_all_customers():
+# 4. Function Definitions
+
+def collectInfo(): # This function collects customer information from the user
+    print("Contact Information Form")
+    print("Please fill out the following information:")
+    name = input("Name: ")
+    birthday = input("Birthday (MM-DD-YYYY): ")
+    email = input("Email: ")
+    phone_number = input("Phone Number: ")
+    address = input("Address: ")
+    city = input("City: ")
+    state = input("State/Province: ")
+    zipCode = input("ZIP/Postal Code: ")
+    country = input("Country: ")
+    preferredContact = input("Preferred Contact Method (Email/Phone): ")
+
+    return name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact
+
+def view_all_customers(): # This function retrieves and displays all customers from the database
     c.execute("SELECT * FROM customers") # Select all records from the customers table
     customers = c.fetchall() # Fetch all records
     
@@ -82,7 +89,7 @@ def view_all_customers():
     for customer in customers:
         print(f"ID: {customer[0]}, Name: {customer[1]}, Birthday: {customer[2]}, Email: {customer[3]}, Phone: {customer[4]}, Address: {customer[5]}, Preferred Contact: {customer[6]}") # Print each customer's information
     
-def main():
+def main(): # This is the main function that orchestrates the program flow
     name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact = collectInfo() # Collect customer information
     
     # Create a new customer object
@@ -94,5 +101,6 @@ def main():
 
     conn.close() # Close the connection to the database
 
+# 5. Main Program Execution
 if __name__ == "__main__":
     main() # Call the main function to execute the program
