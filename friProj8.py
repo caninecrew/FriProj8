@@ -1,6 +1,21 @@
-# User interaction (start with text input)
+import sqlite3
 
-# name, birthday, email, phone number, address, and a dropdown menu for preferred contact method
+# Connect to SQLite database (or create it if it doesn't exist)
+conn = sqlite3.connect('customer.db') # This will create a new database file named customer.db in the current directory
+c = conn.cursor() # Create a cursor object to interact with the database
+
+# Create a table for customer information if it doesn't exist
+c.execute('''
+CREATE TABLE IF NOT EXISTS customers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    birthday TEXT NOT NULL,
+    email TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    address TEXT NOT NULL,
+    preferred_contact TEXT NOT NULL,            
+)
+''')
 
 print("Contact Information Form")
 print("Please fill out the following information:")
@@ -14,6 +29,7 @@ state = input("State/Province: ")
 zip = input("ZIP/Postal Code: ")
 country = input("Country: ")
 preferredContact = input("Preferred Contact Method (Email/Phone): ")
+
 
 class Customer:
     def __init__(self, name, birthday, email, phone_number, address, city, state, zip, country, preferredContact):
