@@ -105,4 +105,26 @@ try:
 except:
     pass  # If theme is not available, continue with default
 
+def clearForm():
+    """Clear all entry fields in the form."""
+    name_entry.delete(0, END)
+    birthday_entry.delete(0, END)
+    email_entry.delete(0, END)
+    phone_entry.delete(0, END)
+    address_entry.delete(0, END)
+    city_entry.delete(0, END)
+    state_entry.delete(0, END)
+    zip_entry.delete(0, END)
+
+    # country defaults to placeholder "USA"
+    country_entry.delete(0, END)
+    country_entry.insert(0, "USA")
+    country_entry.config(foreground='gray')
+
+    # reset dropdown to first option
+    contact_combobox.current(0)
+
+    # Set focus back to the name entry field
+    name_entry.focus()
+
 root.mainloop() # Start the main event loop
