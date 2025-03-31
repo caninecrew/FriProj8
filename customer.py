@@ -1,4 +1,5 @@
 # 3. Class Definition
+from database import conn, c
 
 class Customer: # This class represents a customer and their contact information
     def __init__(self, name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact):
