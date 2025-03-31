@@ -3,6 +3,7 @@ from tkinter import ttk # Import the ttk module for themed widgets
 from tkinter import messagebox # Import the messagebox module for pop-up messages
 from customer import Customer # Import the Customer class from customer.py
 from database import view_all_customers # Import the view_all_customers function from database.py
+import re # Import the re module for regular expressions
 
 def clearForm():
     """Clear all entry fields in the form."""
@@ -39,6 +40,16 @@ def submitForm():
     country = country_entry.get()
     preferredContact = contact_combobox.get()
 
+    # Validate that all fields are filled
+    if not all([name, birthday, email, phone, address, city, state, zipCode, country]):
+        messagebox.showerror("Error", "All fields are required")
+        return
+    
+    # Additional validation for birthday format
+    if not re.match(r"\d{2}-\d{2}-\d{4}", birthday):
+        messagebox.showerror("Error", "Birthday must be in MM-DD-YYYY format")
+        return
+
     # Create a new Customer object
     customer = Customer(name, birthday, email, phone, address, city, state, zipCode, country, preferredContact)
     
@@ -50,7 +61,7 @@ def submitForm():
     
     # Clear the form after submission
     clearForm()
-    
+
 root = Tk() # Create the main window
 root.title("Customer Information Form")
 root.geometry("500x600") # Set the window size
