@@ -77,6 +77,16 @@ def submitForm():
             if not (year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)):
                 messagebox.showerror("Error", f"February 29 only exists in leap years")
                 return
+            
+        # Check year range (between 1900 and current year)
+        current_year = datetime.now().year
+        if year < 1900:
+            messagebox.showerror("Error", "Birth year must be 1900 or later")
+            return
+            
+        if year > current_year:
+            messagebox.showerror("Error", "Birth year cannot be in the future")
+            return
         
     except ValueError:
         messagebox.showerror("Error", "Invalid date format")
