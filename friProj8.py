@@ -68,6 +68,18 @@ class Customer: # This class represents a customer and their contact information
         ''', (self.name, self.birthday, self.email, self.phone_number, self.address, self.preferredContact))
         conn.commit()
 
+def view_all_customers():
+    c.execute("SELECT * FROM customers") # Select all records from the customers table
+    customers = c.fetchall() # Fetch all records
+    
+    if not customers: # If there are no customers, print a message
+        print("No customers found in the database.")
+        return
+    
+    print("\n----- CUSTOMERS IN DATABASE -----")
+    for customer in customers:
+        print(f"ID: {customer[0]}, Name: {customer[1]}, Birthday: {customer[2]}, Email: {customer[3]}, Phone: {customer[4]}, Address: {customer[5]}, Preferred Contact: {customer[6]}") # Print each customer's information
+    
 
 # Create a new customer object
 customer = Customer(name, birthday, email, phone_number, address, city, state, zip, country, preferredContact)
