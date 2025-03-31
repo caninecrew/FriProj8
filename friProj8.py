@@ -17,6 +17,9 @@ CREATE TABLE IF NOT EXISTS customers (
 )
 ''')
 
+# Commit the changes to the database
+conn.commit()
+
 print("Contact Information Form")
 print("Please fill out the following information:")
 name = input("Name: ")
@@ -43,3 +46,9 @@ class Customer:
         self.zip = zip
         self.country = country
         self.preferredContact = preferredContact
+
+# Create a new customer object
+customer = Customer(name, birthday, email, phone_number, address, city, state, zip, country, preferredContact)
+
+
+conn.close() # Close the connection to the database
