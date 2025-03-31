@@ -94,9 +94,9 @@ button_frame.pack(pady=20)
 submit_button = ttk.Button(button_frame, text="Submit", style="Accent.TButton")
 submit_button.pack(side=LEFT, padx=5)
 
-# Clear button
-clear_button = ttk.Button(button_frame, text="Clear Form")
-clear_button.pack(side=LEFT, padx=5)
+# Apply a modern theme if available
+try:
+    # Try to use a more modern theme if available
     style = ttk.Style()
     style.theme_use('clam')  # Also try: 'alt', 'classic', 'default', 'vista'
     
