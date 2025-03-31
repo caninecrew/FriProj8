@@ -88,6 +88,12 @@ def submitForm():
             messagebox.showerror("Error", "Birth year cannot be in the future")
             return
         
+        # Check if birthday is in the future
+        birth_date = datetime(year, month, day)
+        if birth_date > datetime.now():
+            messagebox.showerror("Error", "Birthday cannot be in the future")
+            return
+        
     except ValueError:
         messagebox.showerror("Error", "Invalid date format")
         return
