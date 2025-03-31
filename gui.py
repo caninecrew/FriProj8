@@ -101,6 +101,14 @@ def submitForm():
             messagebox.showerror("Error", "Please enter a valid US state abbreviation (e.g., NY, CA, TX)")
             return
     
+    # ZIP code validation
+    if country == "USA" or (country_entry.cget("foreground") == "gray" and country == "USA"):
+        # For US ZIP codes, check for either 5-digit or 9-digit format (ZIP+4)
+        zip_pattern = r'^\d{5}(-\d{4})?$'
+        if not re.match(zip_pattern, zipCode):
+            messagebox.showerror("Error", "Please enter a valid US ZIP code (5 digits or ZIP+4 format)")
+            return
+    
     # Phone number validation
     # Remove any non-numeric characters for consistent validation
     cleaned_phone = re.sub(r'\D', '', phone)
@@ -220,7 +228,7 @@ address_label.pack(anchor=W, pady=(10, 5))
 address_frame, address_label, address_entry = createField(main_frame, "Address:")
 city_frame, city_label, city_entry = createField(main_frame, "City:")
 state_frame, state_label, state_entry = createField(main_frame, "State:", placeholder="e.g. TN")
-zip_frame, zip_label, zip_entry = createField(main_frame, "ZIP Code:")
+zip_frame, zip_label, zip_entry = createField(main_frame, "ZIP Code:", placeholder="12345 or 12345-6789")
 country_frame, country_label, country_entry = createField(main_frame, "Country:", placeholder="USA")
 
 # Separator for visual organization
