@@ -86,8 +86,16 @@ contact_combobox = ttk.Combobox(contact_frame, values=["Email", "Phone", "Mail"]
 contact_combobox.current(0)  # Set default to first option
 contact_combobox.pack(side=LEFT)
 
-# Add a button to the window
-button = ttk.Button(main_frame, text="Submit")
-button.pack(pady=10)
+# Buttons frame
+button_frame = ttk.Frame(main_frame)
+button_frame.pack(pady=20)
+
+# Submit button with better styling
+submit_button = ttk.Button(button_frame, text="Submit", style="Accent.TButton")
+submit_button.pack(side=LEFT, padx=5)
+
+# Clear button
+clear_button = ttk.Button(button_frame, text="Clear Form")
+clear_button.pack(side=LEFT, padx=5)
 
 root.mainloop() # Start the main event loop
