@@ -6,7 +6,7 @@ from database import view_all_customers # Import the view_all_customers function
 
 root = Tk() # Create the main window
 root.title("Customer Information Form")
-root.geometry("450x550") # Set the window size
+root.geometry("450x430") # Set the window size
 
 # Create a main frame with padding
 main_frame = ttk.Frame(root, padding=20)
