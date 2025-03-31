@@ -99,7 +99,7 @@ contact_combobox.current(0)  # Set default to first option
 contact_combobox.pack(side=LEFT, fill=X, expand=TRUE)
 
 # Add a button to the window
-button = ttk.Button(root, text="Submit")
+button = ttk.Button(main_frame, text="Submit")
 button.pack(pady=10)
 
 root.mainloop() # Start the main event loop
