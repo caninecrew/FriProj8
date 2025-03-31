@@ -82,7 +82,21 @@ def submitForm():
         messagebox.showerror("Error", "Please enter a valid email address")
         return
     
-    # Additional validation for birthday format
+    # Phone number validation (new code)
+    # Remove any non-numeric characters for consistent validation
+    cleaned_phone = re.sub(r'\D', '', phone)
+    
+    # Check if we have a valid number of digits (10 for US numbers, or 11 with country code)
+    if len(cleaned_phone) < 10 or len(cleaned_phone) > 11:
+        messagebox.showerror("Error", "Please enter a valid phone number (10 digits)")
+        return
+    
+    # If 11 digits, first digit should be 1 (country code)
+    if len(cleaned_phone) == 11 and cleaned_phone[0] != '1':
+        messagebox.showerror("Error", "Invalid country code. Use 1 for US/Canada numbers.")
+        return
+    
+    # Birthday validation
     if not re.match(r"\d{2}-\d{2}-\d{4}", birthday):
         messagebox.showerror("Error", "Birthday must be in MM-DD-YYYY format")
         return
@@ -175,7 +189,7 @@ personal_label.pack(anchor=W, pady=(10, 5))
 name_frame, name_label, name_entry = createField(main_frame, "Name:")
 birthday_frame, birthday_label, birthday_entry = createField(main_frame, "Birthday:", placeholder="MM-DD-YYYY")
 email_frame, email_label, email_entry = createField(main_frame, "Email:")
-phone_frame, phone_label, phone_entry = createField(main_frame, "Phone:")
+phone_frame, phone_label, phone_entry = createField(main_frame, "Phone:", placeholder="123-456-7890")
 
 # Separator for visual organization
 ttk.Separator(main_frame, orient='horizontal').pack(fill=X, pady=10)
