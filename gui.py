@@ -73,6 +73,31 @@ state_label.pack(side=LEFT)
 state_entry = ttk.Entry(state_frame)
 state_entry.pack(side=LEFT, fill=X, expand=TRUE)
 
+# ZIP Code
+zip_frame = ttk.Frame(main_frame)
+zip_frame.pack(fill=X, pady=5)
+zip_label = ttk.Label(zip_frame, text="ZIP Code:", width=15, anchor=W)
+zip_label.pack(side=LEFT)
+zip_entry = ttk.Entry(zip_frame)
+zip_entry.pack(side=LEFT, fill=X, expand=TRUE)
+
+# Country
+country_frame = ttk.Frame(main_frame)
+country_frame.pack(fill=X, pady=5)
+country_label = ttk.Label(country_frame, text="Country:", width=15, anchor=W)
+country_label.pack(side=LEFT)
+country_entry = ttk.Entry(country_frame)
+country_entry.pack(side=LEFT, fill=X, expand=TRUE)
+
+# Preferred Contact (dropdown)
+contact_frame = ttk.Frame(main_frame)
+contact_frame.pack(fill=X, pady=5)
+contact_label = ttk.Label(contact_frame, text="Preferred Contact:", width=15, anchor=W)
+contact_label.pack(side=LEFT)
+contact_combobox = ttk.Combobox(contact_frame, values=["Email", "Phone", "Mail"])
+contact_combobox.current(0)  # Set default to first option
+contact_combobox.pack(side=LEFT, fill=X, expand=TRUE)
+
 # Add a button to the window
 button = ttk.Button(root, text="Submit")
 button.pack(pady=10)
