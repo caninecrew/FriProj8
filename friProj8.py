@@ -61,9 +61,17 @@ class Customer: # This class represents a customer and their contact information
         print(f"Address: {self.address}")
         print(f"Preferred Contact Method: {self.preferredContact}")
 
+    def saveToDatabase(self): # This method saves the customer's information to the database
+        c.execute('''
+        INSERT INTO customers (name, birthday, email, phone, address, preferred_contact)
+        VALUES (?, ?, ?, ?, ?, ?)
+        ''', (self.name, self.birthday, self.email, self.phone_number, self.address, self.preferredContact))
+        conn.commit()
+
+
 # Create a new customer object
 customer = Customer(name, birthday, email, phone_number, address, city, state, zip, country, preferredContact)
 customer.printInfo() # Print the customer's information
-
+customer.saveToDatabase() # Save the customer's information to the database
 
 conn.close() # Close the connection to the database
