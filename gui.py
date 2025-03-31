@@ -40,11 +40,11 @@ country_frame, country_label, country_entry = createField(main_frame, "Country:"
 # Preferred Contact (dropdown)
 contact_frame = ttk.Frame(main_frame)
 contact_frame.pack(fill=X, pady=5)
-contact_label = ttk.Label(contact_frame, text="Preferred Contact:", width=15, anchor=W)
+contact_label = ttk.Label(contact_frame, text="Preferred Contact:", width=16, anchor=W)
 contact_label.pack(side=LEFT)
-contact_combobox = ttk.Combobox(contact_frame, values=["Email", "Phone", "Mail"])
+contact_combobox = ttk.Combobox(contact_frame, values=["Email", "Phone", "Mail"], width=17)
 contact_combobox.current(0)  # Set default to first option
-contact_combobox.pack(side=LEFT, fill=X, expand=TRUE)
+contact_combobox.pack(side=LEFT)
 
 # Add a button to the window
 button = ttk.Button(main_frame, text="Submit")
