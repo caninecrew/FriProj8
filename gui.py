@@ -82,7 +82,26 @@ def submitForm():
         messagebox.showerror("Error", "Please enter a valid email address")
         return
     
-    # Phone number validation (new code)
+    # State validation (US state abbreviations)
+    if country == "USA" or (country_entry.cget("foreground") == "gray" and country == "USA"):
+        # Dictionary of valid US state abbreviations
+        valid_states = {
+            'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 
+            'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 
+            'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 
+            'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 
+            'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY',
+            'DC', 'AS', 'GU', 'MP', 'PR', 'VI'  # Territories
+        }
+        
+        # Convert state to uppercase for validation
+        state_upper = state.upper()
+        
+        if state_upper not in valid_states:
+            messagebox.showerror("Error", "Please enter a valid US state abbreviation (e.g., NY, CA, TX)")
+            return
+    
+    # Phone number validation
     # Remove any non-numeric characters for consistent validation
     cleaned_phone = re.sub(r'\D', '', phone)
     
@@ -200,7 +219,7 @@ address_label.pack(anchor=W, pady=(10, 5))
 
 address_frame, address_label, address_entry = createField(main_frame, "Address:")
 city_frame, city_label, city_entry = createField(main_frame, "City:")
-state_frame, state_label, state_entry = createField(main_frame, "State:")
+state_frame, state_label, state_entry = createField(main_frame, "State:", placeholder="e.g. TN")
 zip_frame, zip_label, zip_entry = createField(main_frame, "ZIP Code:")
 country_frame, country_label, country_entry = createField(main_frame, "Country:", placeholder="USA")
 
