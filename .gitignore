@@ -1,2 +1,5 @@
 # Database files
 customer.db
+
+# Python cache files
+__pycache__/
