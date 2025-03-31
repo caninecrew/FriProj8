@@ -13,7 +13,7 @@ main_frame = ttk.Frame(root, padding=20)
 main_frame.pack(fill=BOTH, expand=True)
 
 # Add a title label to the window
-title_label = ttk.Label(root, text="Contact Information", font=("Arial", 12, "bold"))
+title_label = ttk.Label(main_frame, text="Contact Information", font=("Arial", 12, "bold"))
 title_label.pack(pady=(0, 15))
 
 # Function to create a form field
