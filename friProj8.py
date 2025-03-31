@@ -34,17 +34,23 @@ country = input("Country: ")
 preferredContact = input("Preferred Contact Method (Email/Phone): ")
 
 
-class Customer:
+class Customer: # This class represents a customer and their contact information
     def __init__(self, name, birthday, email, phone_number, address, city, state, zip, country, preferredContact):
         self.name = name
         self.birthday = birthday
         self.email = email
         self.phone_number = phone_number
-        self.address = address
+
+        # Store individual address components
+        self.streetAddress = address
         self.city = city
         self.state = state
         self.zip = zip
         self.country = country
+
+        # Create combined address string
+        self.address = f"{address}, {city}, {state}, {zip}, {country}"
+        
         self.preferredContact = preferredContact
 
 # Create a new customer object
