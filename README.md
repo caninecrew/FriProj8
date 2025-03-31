@@ -23,6 +23,8 @@ This application is a Customer Information Management System developed as a proj
 To run the application with the GUI:
 ```bash
 python friProj8.py
+```
+
 
 If you prefer the command-line interface, modify friProj8.py to uncomment the start_cli() line and comment out import gui.
 
