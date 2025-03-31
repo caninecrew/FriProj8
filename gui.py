@@ -62,6 +62,18 @@ def submitForm():
             messagebox.showerror("Error", "Month must be between 1 and 12")
             return
         
+        # Check day range based on month
+        maxDays = {
+            1: 31, 2: 29, 3: 31, 4: 30, 5: 31, 6: 30,
+            7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31
+        }
+
+        if day < 1 or day > maxDays[month]:
+            messagebox.showerror("Error", "Invalid day for the given month")
+            return
+        
+        
+        
     except ValueError:
         messagebox.showerror("Error", "Invalid date format")
         return
