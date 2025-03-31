@@ -98,18 +98,22 @@ def submitForm():
         messagebox.showerror("Error", "Invalid date format")
         return
         
-
     # Create a new Customer object
-    customer = Customer(name, birthday, email, phone, address, city, state, zipCode, country, preferredContact)
-    
-    # Save to database
-    customer.saveToDatabase()
+    try:
+        customer = Customer(name, birthday, email, phone, address, city, state, zipCode, country, preferredContact)
+        
+        # Save to database
+        customer.saveToDatabase()
 
-    # Show success message
-    messagebox.showinfo("Success", "Customer information saved successfully!")
+        # Show success message
+        messagebox.showinfo("Success", "Customer information saved successfully!")
+        
+        # Clear the form after submission
+        clearForm()
     
-    # Clear the form after submission
-    clearForm()
+    except Exception as e:
+        messagebox.showerror("Error", f"Could not save customer: {str(e)}")
+        return
 
 root = Tk() # Create the main window
 root.title("Customer Information Form")
