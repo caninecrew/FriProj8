@@ -73,7 +73,8 @@ def collectInfo(): # This function collects customer information from the user
     state = input("State/Province: ")
     zipCode = input("ZIP/Postal Code: ")
     country = input("Country: ")
-    preferredContact = input("Preferred Contact Method (Email/Phone): ")
+    validContactMethods = ["email", "phone", "mail"]
+    preferredContact = input("Preferred Contact Method (Email/Phone/Mail): ").lower()
 
     return name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact
 
