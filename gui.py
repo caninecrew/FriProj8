@@ -42,7 +42,7 @@ contact_frame = ttk.Frame(main_frame)
 contact_frame.pack(fill=X, pady=5)
 contact_label = ttk.Label(contact_frame, text="Preferred Contact:", width=16, anchor=W)
 contact_label.pack(side=LEFT)
-contact_combobox = ttk.Combobox(contact_frame, values=["Email", "Phone", "Mail"], width=17)
+contact_combobox = ttk.Combobox(contact_frame, values=["Email", "Phone", "Mail"], width=17, state="readonly")
 contact_combobox.current(0)  # Set default to first option
 contact_combobox.pack(side=LEFT)
 
