@@ -90,8 +90,8 @@ contact_combobox.pack(side=LEFT)
 button_frame = ttk.Frame(main_frame)
 button_frame.pack(pady=20)
 
-# Submit button with better styling
-submit_button = ttk.Button(button_frame, text="Submit", style="Accent.TButton")
+# Replace the existing submit button line with this:
+submit_button = ttk.Button(button_frame, text="Submit", style="Accent.TButton", command=submitForm)
 submit_button.pack(side=LEFT, padx=5)
 
 # Apply a modern theme if available
@@ -126,5 +126,30 @@ def clearForm():
 
     # Set focus back to the name entry field
     name_entry.focus()
+
+def submitForm():
+    """Submit the form and save customer information."""
+    name = name_entry.get()
+    birthday = birthday_entry.get()
+    email = email_entry.get()
+    phone = phone_entry.get()
+    address = address_entry.get()
+    city = city_entry.get()
+    state = state_entry.get()
+    zipCode = zip_entry.get()
+    country = country_entry.get()
+    preferredContact = contact_combobox.get()
+
+    # Create a new Customer object
+    customer = Customer(name, birthday, email, phone, address, city, state, zipCode, country, preferredContact)
+    
+    # Save to database
+    customer.saveToDatabase()
+
+    # Show success message
+    messagebox.showinfo("Success", "Customer information saved successfully!")
+    
+    # Clear the form after submission
+    clearForm()
 
 root.mainloop() # Start the main event loop
