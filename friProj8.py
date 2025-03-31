@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS customers (
     email TEXT NOT NULL,
     phone TEXT NOT NULL,
     address TEXT NOT NULL,
-    preferred_contact TEXT NOT NULL,            
-)
+    preferred_contact TEXT NOT NULL            
+);
 ''')
 
 # Commit the changes to the database
