@@ -90,6 +90,8 @@ def main():
     customer.printInfo() # Print the customer's information
     customer.saveToDatabase() # Save the customer's information to the database
 
+    view_all_customers() # View all customers in the database
+
     conn.close() # Close the connection to the database
 
 if __name__ == "__main__":
