@@ -50,11 +50,20 @@ class Customer: # This class represents a customer and their contact information
 
         # Create combined address string
         self.address = f"{address}, {city}, {state}, {zip}, {country}"
-        
+
         self.preferredContact = preferredContact
+
+    def printInfo(self): # This method prints the customer's information
+        print(f"Name: {self.name}")
+        print(f"Birthday: {self.birthday}")
+        print(f"Email: {self.email}")
+        print(f"Phone Number: {self.phone_number}")
+        print(f"Address: {self.address}")
+        print(f"Preferred Contact Method: {self.preferredContact}")
 
 # Create a new customer object
 customer = Customer(name, birthday, email, phone_number, address, city, state, zip, country, preferredContact)
+customer.printInfo() # Print the customer's information
 
 
 conn.close() # Close the connection to the database
