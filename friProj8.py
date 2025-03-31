@@ -30,14 +30,14 @@ def collectInfo():
     address = input("Address: ")
     city = input("City: ")
     state = input("State/Province: ")
-    zip = input("ZIP/Postal Code: ")
+    zipCode = input("ZIP/Postal Code: ")
     country = input("Country: ")
     preferredContact = input("Preferred Contact Method (Email/Phone): ")
 
-    return name, birthday, email, phone_number, address, city, state, zip, country, preferredContact
+    return name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact
 
 class Customer: # This class represents a customer and their contact information
-    def __init__(self, name, birthday, email, phone_number, address, city, state, zip, country, preferredContact):
+    def __init__(self, name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact):
         self.name = name
         self.birthday = birthday
         self.email = email
@@ -47,11 +47,11 @@ class Customer: # This class represents a customer and their contact information
         self.streetAddress = address
         self.city = city
         self.state = state
-        self.zip = zip
+        self.zipCode = zipCode
         self.country = country
 
         # Create combined address string
-        self.address = f"{address}, {city}, {state}, {zip}, {country}"
+        self.address = f"{address}, {city}, {state}, {zipCode}, {country}"
 
         self.preferredContact = preferredContact
 
@@ -83,10 +83,10 @@ def view_all_customers():
         print(f"ID: {customer[0]}, Name: {customer[1]}, Birthday: {customer[2]}, Email: {customer[3]}, Phone: {customer[4]}, Address: {customer[5]}, Preferred Contact: {customer[6]}") # Print each customer's information
     
 def main():
-    name, birthday, email, phone_number, address, city, state, zip, country, preferredContact = collectInfo() # Collect customer information
+    name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact = collectInfo() # Collect customer information
     
     # Create a new customer object
-    customer = Customer(name, birthday, email, phone_number, address, city, state, zip, country, preferredContact)
+    customer = Customer(name, birthday, email, phone_number, address, city, state, zipCode, country, preferredContact)
     customer.printInfo() # Print the customer's information
     customer.saveToDatabase() # Save the customer's information to the database
 
