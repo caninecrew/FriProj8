@@ -201,9 +201,12 @@ contact_combobox.pack(side=LEFT)
 button_frame = ttk.Frame(main_frame)
 button_frame.pack(pady=20)
 
-# Replace the existing submit button line with this:
+# Submit and Clear buttons
 submit_button = ttk.Button(button_frame, text="Submit", style="Accent.TButton", command=submitForm)
 submit_button.pack(side=LEFT, padx=5)
+
+clear_button = ttk.Button(button_frame, text="Clear Form", command=clearForm)
+clear_button.pack(side=LEFT, padx=5)
 
 # Apply a modern theme if available
 try:
