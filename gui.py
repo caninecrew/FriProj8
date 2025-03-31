@@ -2,7 +2,6 @@ from tkinter import * # Import the tkinter module
 from tkinter import ttk # Import the ttk module for themed widgets
 from tkinter import messagebox # Import the messagebox module for pop-up messages
 from customer import Customer # Import the Customer class from customer.py
-from database import view_all_customers # Import the view_all_customers function from database.py
 import re # Import the re module for regular expressions
 from datetime import datetime # Import the datetime module for date handling
 
