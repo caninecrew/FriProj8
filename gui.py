@@ -20,6 +20,10 @@ title_label.pack(pady=(0, 20))
 # Seperator for visual separation
 ttk.Separator(main_frame, orient='horizontal').pack(fill=X, pady=5)
 
+# Personal Info Section
+personal_label = ttk.Label(main_frame, text="Personal Information", font=("Arial", 12))
+personal_label.pack(anchor=W, pady=(10, 5))
+
 # Function to create a form field
 def createField(parent, labelText, width=10):
     frame = ttk.Frame(parent)
