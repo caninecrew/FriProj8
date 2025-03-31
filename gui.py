@@ -189,7 +189,7 @@ personal_label.pack(anchor=W, pady=(10, 5))
 name_frame, name_label, name_entry = createField(main_frame, "Name:")
 birthday_frame, birthday_label, birthday_entry = createField(main_frame, "Birthday:", placeholder="MM-DD-YYYY")
 email_frame, email_label, email_entry = createField(main_frame, "Email:")
-phone_frame, phone_label, phone_entry = createField(main_frame, "Phone:", placeholder="123-456-7890")
+phone_frame, phone_label, phone_entry = createField(main_frame, "Phone:", placeholder="+1 123-456-7890")
 
 # Separator for visual organization
 ttk.Separator(main_frame, orient='horizontal').pack(fill=X, pady=10)
