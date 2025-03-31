@@ -91,3 +91,6 @@ def main():
     customer.saveToDatabase() # Save the customer's information to the database
 
     conn.close() # Close the connection to the database
+
+if __name__ == "__main__":
+    main() # Call the main function to execute the program
