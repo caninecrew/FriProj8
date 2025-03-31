@@ -6,15 +6,19 @@ from database import view_all_customers # Import the view_all_customers function
 
 root = Tk() # Create the main window
 root.title("Customer Information Form")
-root.geometry("450x430") # Set the window size
+root.geometry("500x600") # Set the window size
+root.configure(bg="#f0f0f0") # Set the background color
 
 # Create a main frame with padding
 main_frame = ttk.Frame(root, padding=20)
 main_frame.pack(fill=BOTH, expand=True)
 
 # Add a title label to the window
-title_label = ttk.Label(main_frame, text="Contact Information", font=("Arial", 12, "bold"))
-title_label.pack(pady=(0, 15))
+title_label = ttk.Label(main_frame, text="Customer Information", font=("Arial", 12, "bold"))
+title_label.pack(pady=(0, 20))
+
+# Seperator for visual separation
+ttk.Separator(main_frame, orient='horizontal').pack(fill=X, pady=5)
 
 # Function to create a form field
 def createField(parent, labelText, width=10):
