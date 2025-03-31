@@ -25,13 +25,35 @@ personal_label = ttk.Label(main_frame, text="Personal Information", font=("Arial
 personal_label.pack(anchor=W, pady=(10, 5))
 
 # Function to create a form field
-def createField(parent, labelText, width=10):
+def createField(parent, labelText, width=12, placeholder=None):
     frame = ttk.Frame(parent)
     frame.pack(fill=X, pady=5)
     label = ttk.Label(frame, text=labelText, width=width, anchor=W)
     label.pack(side=LEFT)
     entry = ttk.Entry(frame)
     entry.pack(side=LEFT, fill=X, expand=True)
+
+    # Placeholder text for entry fields
+    if placeholder:
+        entry.insert(0, placeholder)
+        entry.config(foreground='gray')
+        
+        # Clear placeholder on focus
+        def on_focus_in(event):
+            if entry.get() == placeholder:
+                entry.delete(0, END)
+                entry.config(foreground='black')
+                
+        # Restore placeholder if field is empty
+        def on_focus_out(event):
+            if entry.get() == '':
+                entry.insert(0, placeholder)
+                entry.config(foreground='gray')
+                
+        entry.bind('<FocusIn>', on_focus_in)
+        entry.bind('<FocusOut>', on_focus_out)
+
+
     return frame, label, entry
 
 # Create fields for customer information
