@@ -97,5 +97,12 @@ submit_button.pack(side=LEFT, padx=5)
 # Clear button
 clear_button = ttk.Button(button_frame, text="Clear Form")
 clear_button.pack(side=LEFT, padx=5)
+    style = ttk.Style()
+    style.theme_use('clam')  # Also try: 'alt', 'classic', 'default', 'vista'
+    
+    # Create a custom style for the Submit button
+    style.configure("Accent.TButton", font=("Arial", 10, "bold"))
+except:
+    pass  # If theme is not available, continue with default
 
 root.mainloop() # Start the main event loop
