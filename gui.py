@@ -53,7 +53,6 @@ def createField(parent, labelText, width=12, placeholder=None):
         entry.bind('<FocusIn>', on_focus_in)
         entry.bind('<FocusOut>', on_focus_out)
 
-
     return frame, label, entry
 
 # Create fields for customer information
@@ -61,11 +60,22 @@ name_frame, name_label, name_entry = createField(main_frame, "Name:")
 birthday_frame, birthday_label, birthday_entry = createField(main_frame, "Birthday:")
 email_frame, email_label, email_entry = createField(main_frame, "Email:")
 phone_frame, phone_label, phone_entry = createField(main_frame, "Phone:")
+
+# Separator for visual organization
+ttk.Separator(main_frame, orient='horizontal').pack(fill=X, pady=10)
+
+# Address Section
+address_label = ttk.Label(main_frame, text="Address Information", font=("Arial", 12))
+address_label.pack(anchor=W, pady=(10, 5))
+
 address_frame, address_label, address_entry = createField(main_frame, "Address:")
 city_frame, city_label, city_entry = createField(main_frame, "City:")
 state_frame, state_label, state_entry = createField(main_frame, "State:")
 zip_frame, zip_label, zip_entry = createField(main_frame, "ZIP Code:")
-country_frame, country_label, country_entry = createField(main_frame, "Country:")
+country_frame, country_label, country_entry = createField(main_frame, "Country:", placeholder="USA")
+
+# Separator for visual organization
+ttk.Separator(main_frame, orient='horizontal').pack(fill=X, pady=10)
 
 # Preferred Contact (dropdown)
 contact_frame = ttk.Frame(main_frame)
