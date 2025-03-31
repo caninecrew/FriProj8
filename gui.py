@@ -4,6 +4,7 @@ from tkinter import messagebox # Import the messagebox module for pop-up message
 from customer import Customer # Import the Customer class from customer.py
 from database import view_all_customers # Import the view_all_customers function from database.py
 import re # Import the re module for regular expressions
+from datetime import datetime # Import the datetime module for date handling
 
 def clearForm():
     """Clear all entry fields in the form."""
@@ -49,6 +50,22 @@ def submitForm():
     if not re.match(r"\d{2}-\d{2}-\d{4}", birthday):
         messagebox.showerror("Error", "Birthday must be in MM-DD-YYYY format")
         return
+    
+    # Validate birthday is realistic
+    try:
+        # Parse the birthday to check if it's a valid date
+        parts = birthday.split('-')
+        month, day, year = int(parts[0]), int(parts[1]), int(parts[2])
+
+        # Check month range
+        if month < 1 or month > 12:
+            messagebox.showerror("Error", "Month must be between 1 and 12")
+            return
+        
+    except ValueError:
+        messagebox.showerror("Error", "Invalid date format")
+        return
+        
 
     # Create a new Customer object
     customer = Customer(name, birthday, email, phone, address, city, state, zipCode, country, preferredContact)
