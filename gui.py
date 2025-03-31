@@ -168,7 +168,7 @@ personal_label.pack(anchor=W, pady=(10, 5))
 
 # Create fields for customer information
 name_frame, name_label, name_entry = createField(main_frame, "Name:")
-birthday_frame, birthday_label, birthday_entry = createField(main_frame, "Birthday:")
+birthday_frame, birthday_label, birthday_entry = createField(main_frame, "Birthday:", placeholder="MM-DD-YYYY")
 email_frame, email_label, email_entry = createField(main_frame, "Email:")
 phone_frame, phone_label, phone_entry = createField(main_frame, "Phone:")
 
