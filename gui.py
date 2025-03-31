@@ -76,6 +76,12 @@ def submitForm():
         messagebox.showerror("Error", "All fields are required")
         return
     
+    # Email validation
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if not re.match(email_pattern, email):
+        messagebox.showerror("Error", "Please enter a valid email address")
+        return
+    
     # Additional validation for birthday format
     if not re.match(r"\d{2}-\d{2}-\d{4}", birthday):
         messagebox.showerror("Error", "Birthday must be in MM-DD-YYYY format")
