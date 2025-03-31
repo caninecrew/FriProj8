@@ -34,6 +34,8 @@ def collectInfo():
     country = input("Country: ")
     preferredContact = input("Preferred Contact Method (Email/Phone): ")
 
+    return name, birthday, email, phone_number, address, city, state, zip, country, preferredContact
+
 class Customer: # This class represents a customer and their contact information
     def __init__(self, name, birthday, email, phone_number, address, city, state, zip, country, preferredContact):
         self.name = name
@@ -80,10 +82,12 @@ def view_all_customers():
     for customer in customers:
         print(f"ID: {customer[0]}, Name: {customer[1]}, Birthday: {customer[2]}, Email: {customer[3]}, Phone: {customer[4]}, Address: {customer[5]}, Preferred Contact: {customer[6]}") # Print each customer's information
     
+def main():
+    name, birthday, email, phone_number, address, city, state, zip, country, preferredContact = collectInfo() # Collect customer information
+    
+    # Create a new customer object
+    customer = Customer(name, birthday, email, phone_number, address, city, state, zip, country, preferredContact)
+    customer.printInfo() # Print the customer's information
+    customer.saveToDatabase() # Save the customer's information to the database
 
-# Create a new customer object
-customer = Customer(name, birthday, email, phone_number, address, city, state, zip, country, preferredContact)
-customer.printInfo() # Print the customer's information
-customer.saveToDatabase() # Save the customer's information to the database
-
-conn.close() # Close the connection to the database
+    conn.close() # Close the connection to the database
